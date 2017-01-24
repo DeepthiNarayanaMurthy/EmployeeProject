@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html ng-app="index-app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.js"></script>
+    <script src="../app.js"></script>
+    <link href="CSS/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div ng-controller='EmployeesCtrl'>
+        <div ng-include="'Header.html'"></div>
+    </div>
+    <form class="form-horizontal">
+        <fieldset>
+            <div ng-controller='EmployeesCtrl'>
+                <div class="form-group">
+                    <label for="Employee_Id" class="col-lg-2 control-label">Employee Id:</label>
+                    <div class="col-lg-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Employee_Id" ng-model="Employee_Id1" placeholder="Enter Employee Id" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" ng-click="Delete1Employee()">Get Details</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="FName" class="col-lg-2 control-label">First Name:</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" id="FName" ng-model="FName" placeholder="Enter First Name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="LNmae" class="col-lg-2 control-label">Last Name:</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" id="LName" ng-model="LName" placeholder="Enter Last Name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="PhoneNo" class="col-lg-2 control-label">Phone No:</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" id="PhoneNo" ng-model="PhoneNo" placeholder="Enter Phone No." />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Email_Id" class="col-lg-2 control-label">Email Id:</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" id="Email_Id" ng-model="Email_Id" placeholder="Enter Email Id" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Age" class="col-lg-2 control-label">Age:</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" id="Age" ng-model="Age" placeholder="Enter Age" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Status" class="col-lg-2 control-label">Status:</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" id="Status" ng-model="Status" placeholder="Enter Status" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-5 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary" ng-click="DeleteEmployee()">Delete</button>
+                    </div>
+                </div>
+            </div>
+      </fieldset>
+</form>
+</body>
+</html>
