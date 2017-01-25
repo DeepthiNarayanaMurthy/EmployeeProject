@@ -8,8 +8,7 @@ namespace EmployeeService.Tests
     [TestFixture]
     public class EmployeeConterollerTest
     {
-        //private IEmployeeRepository employeeRepositoryMock;
-        //private MockRepository employeeRepositoryMock;
+
         private Employee Employee1 = new Employee()
         {
             Employee_Id = "emp4",

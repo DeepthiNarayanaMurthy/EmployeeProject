@@ -54,7 +54,10 @@ namespace EmployeeService.EmployeeController.WebAPI
             if (employees == null)
                 response = Request.CreateResponse(HttpStatusCode.NotFound, employees);
             else
+            {
                 response = Request.CreateResponse(HttpStatusCode.OK, employees);
+            }
+                
             return response;
         }
 
@@ -69,7 +72,10 @@ namespace EmployeeService.EmployeeController.WebAPI
                 return response;
             }
             var employees = control.CreateNewEmployee(employee);
-            response = Request.CreateResponse(HttpStatusCode.OK,"Success");
+            if(employees==0)
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, "Could not create");
+            else
+                response = Request.CreateResponse(HttpStatusCode.OK,"Success");
             return response;
         }
         [Route("EmployeeDetails/{Employee_Id}")]
@@ -82,7 +88,10 @@ namespace EmployeeService.EmployeeController.WebAPI
                 return response;
             }
             var employees = control.EditEmployeeDetails(employee);
-            response = Request.CreateResponse(HttpStatusCode.OK, "Success");
+            if (employees == 0)
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, "Could not create");
+            else
+                response = Request.CreateResponse(HttpStatusCode.OK, "Success");
             return response;
         }
         [Route("EmployeeDetails/{employeeId}")]

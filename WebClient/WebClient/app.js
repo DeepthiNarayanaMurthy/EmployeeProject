@@ -85,11 +85,11 @@ app.controller('EmployeesCtrl', function ($scope, $http) {
         //    console.log(response.data);
         //});
         $http
-            .get(url, { header: { 'Access-Control-Allow-Origin': '*' } })
+            .get(url,$scope.Employee_Id)
                 .then(function OnSuccess(response) {
                     
                     employee = response.data;
-                    $scope.Employee_Id = employee.Employee_Id;
+                    //$scope.Employee_Id1 = employee.Employee_Id;
                     $scope.FName = employee.FirstName;
                     $scope.LName = employee.LastName;
                     $scope.PhoneNo = employee.PhoneNo;
@@ -98,39 +98,40 @@ app.controller('EmployeesCtrl', function ($scope, $http) {
                     $scope.Status = employee.Status;
                     console.log(response.data);
                 }, function OnFailure(response) {
+                    alert("Employee could not be found");
                     console.log(response);
                 })
         
     }
     $scope.PutEmployee = function () {
-        var url = "http://localhost:4404/EmployeeDetails/" + $scope.Employee_Id;
+        var url = "http://localhost:4404/EmployeeDetails/" + $scope.Employee_Id1;
         var employee = {};
-       
-        if ($scope.Employee_Id) {
-            employee.Employee_Id = $scope.Employee_Id;
-            if ($scope.FName) {
+
+//        if ($scope.Employee_Id) {
+            employee.Employee_Id = $scope.Employee_Id1;
+  //          if ($scope.FName) {
                 employee.FirstName = $scope.FName;
-                if ($scope.LName) {
+   //             if ($scope.LName) {
                     employee.LastName = $scope.LName;
-                    if ($scope.PhoneNo) {
+   //                 if ($scope.PhoneNo) {
                         employee.PhoneNo = $scope.PhoneNo;
-                        if ($scope.Email_Id) {
+    //                    if ($scope.Email_Id) {
                             employee.Email_Id = $scope.Email_Id;
-                            if ($scope.Age) {
+      //                      if ($scope.Age) {
                                 employee.Age = $scope.Age;
-                                if ($scope.Status) {
+        //                        if ($scope.Status) {
                                     employee.Status = $scope.Status;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        else {
-            alert("Fill All Fields");
-            return;
-        }
+          //                      }
+              //              }
+            //            }
+           //         }
+           //     }
+          //  }
+       // }
+       // else {
+         //   alert("Fill All Fields");
+           // return;
+        //}
         console.log(employee);
         $http
             .put(url, employee)
@@ -148,10 +149,10 @@ app.controller('EmployeesCtrl', function ($scope, $http) {
         var employee = {};
         $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
         $http
-            .get(url)
+            .get(url, $scope.Employee_Id)
                 .then(function OnSuccess(response) {
                     employee = response.data;
-                    $scope.Employee_Id = employee.Employee_Id;
+                    //$scope.Employee_Id = employee.Employee_Id;
                     $scope.FName = employee.FirstName;
                     $scope.LName = employee.LastName;
                     $scope.PhoneNo = employee.PhoneNo;
@@ -160,14 +161,15 @@ app.controller('EmployeesCtrl', function ($scope, $http) {
                     $scope.Status = employee.Status;
                     console.log(response.data);
                 }, function OnFailure(response) {
+                    alert("Employee not found");
                     console.log(response);
                 })
 
     }
     $scope.DeleteEmployee = function () {
-        var url = "http://localhost:4404/EmployeeDetails/"+ $scope.Employee_Id;
+        var url = "http://localhost:4404/EmployeeDetails/"+ $scope.Employee_Id1;
         $http
-            .delete(url, $scope.Employee_Id)
+            .delete(url, $scope.Employee_Id1)
                 .then(function OnSuccess(response) {
                     console.log(response.data);
                     alert("Emplyee deleted");
